@@ -1,5 +1,7 @@
 <!DOCTYPE html>
 <html>
+ <meta charset="utf-8">
+ <title>DEMO7 this.state</title>
   <head>
     <script src="../build/react.js"></script>
     <script src="../build/JSXTransformer.js"></script>
@@ -8,18 +10,24 @@
     <div id="example"></div>
     <script type="text/jsx">
 var LikeButton = React.createClass({
-  getInitialState: function() {
+  getInitialState: function() {//定义初始状态
     return {liked: false};
   },
   handleClick: function(event) {
-    this.setState({liked: !this.state.liked});
+    this.setState({liked: !this.state.liked});//this.setState 方法就修改状态值  !取反
   },
   render: function() {
-    var text = this.state.liked ? 'like' : 'haven\'t liked';
+    var text = this.state.liked ? 'like' : 'haven\'t liked';//三元运算符  条件 ? 结果1 : 结果2;
     return (
-      <p onClick={this.handleClick}>
-        You {text} this. Click to toggle.
-      </p>
+     <div>
+	 <p>React 的一大创新，就是将组件看成是一个状态机，一开始有一个初始状态，然后用户互动，导致状态变化，从而触发重新渲染 UI   <b style={{background:'#ddd',padding:'10px'}}>this.setState</b>
+	 </p>
+	 <p>example</p>
+	  <p>
+        You <span style={{color:'#990000'}}>{text}</span> this.
+	  </p>
+		 <button onClick={this.handleClick}>Click to toggle.</button>
+      </div> 
     );
   }
 });

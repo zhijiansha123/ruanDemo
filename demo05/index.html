@@ -1,5 +1,7 @@
 <!DOCTYPE html>
 <html>
+<meta charset="utf-8">
+<title>DEMO5实例</title>
   <head>
     <script src="../build/react.js"></script>
     <script src="../build/JSXTransformer.js"></script>
@@ -9,22 +11,27 @@
       var NotesList = React.createClass({
         render: function() {
           return (
-            <ol>
+            <ul>
               {
                 this.props.children.map(function (child) {
                   return <li>{child}</li>
                 })
               }
-            </ol>
+            </ul>
           );
         }
       });
 
       React.render(
-        <NotesList>
+       <div>
+	   <h1>DEMO5实例</h1>
+	    <NotesList>
           <span>hello</span>
           <span>world</span>
-        </NotesList>,
+        </NotesList>
+		<p style={{color:'#990000'}}>当子节点多余1个时，this.props.children 才是一个数组，否则是不能用 map 方法的</p>
+		<p>我是打酱油的……</p>
+		</div>,
         document.body
       );
     </script>

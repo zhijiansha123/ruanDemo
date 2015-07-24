@@ -1,19 +1,36 @@
 <!DOCTYPE html>
 <html>
+<title>DEMO9 组件的生命周期</title>
   <head>
     <script src="../build/react.js"></script>
     <script src="../build/JSXTransformer.js"></script>
   </head>
   <body>
     <script type="text/jsx">
+/*组件的生命周期分成三个状态：
+	Mounting：已插入真实 DOM
+	Updating：正在被重新渲染
+	Unmounting：已移出真实 DOM
+	React 为每个状态都提供了两种处理函数，will 函数在进入状态之前调用，did 函数在进入状态之后调用，三种状态共计五种处理函数。
+	componentWillMount()
+	componentDidMount()
+	componentWillUpdate(object nextProps, object nextState)
+	componentDidUpdate(object prevProps, object prevState)
+	componentWillUnmount()
+此外，React 还提供两种特殊状态的处理函数。
+	componentWillReceiveProps(object nextProps)：已加载组件收到新的参数时调用
+	shouldComponentUpdate(object nextProps, object nextState)：组件判断是否重新渲染时调用
+*/
+	
+	
       var Hello = React.createClass({
-        getInitialState: function () {
+        getInitialState: function () {//初始化状态
           return {
             opacity: 1.0
           };
         },
 
-        componentDidMount: function () {
+        componentDidMount: function () {//componentDidMount() 在初始化渲染执行之后立刻调用一次，仅客户端有效（服务器端不会调用）
           this.timer = setInterval(function () {
             var opacity = this.state.opacity;
             opacity -= .05;
@@ -36,7 +53,7 @@
       });
 
       React.render(
-        <Hello name="world"/>,
+        <Hello name="world new babay"/>,
         document.body
       );
     </script>

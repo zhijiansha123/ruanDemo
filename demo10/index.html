@@ -1,5 +1,7 @@
 <!DOCTYPE html>
 <html>
+<meta charset="utf-8">
+ <title>Ajax react 和别的库不冲突  例如 jquery</title>
   <head>
     <script src="../build/react.js"></script>
     <script src="../build/JSXTransformer.js"></script>
@@ -30,8 +32,8 @@ var UserGist = React.createClass({
   render: function() {
     return (
       <div>
-        {this.state.username}'s last gist is
-         <a href={this.state.lastGistUrl}>here</a>.
+        {this.state.username} is last gist is
+         <a href={this.state.lastGistUrl} target='_blank'>here</a>.
       </div>
     );
   }

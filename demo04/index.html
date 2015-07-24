@@ -9,12 +9,12 @@
     <script type="text/jsx">
       var HelloMessage = React.createClass({
         render: function() {
-          return <h1>Hello {this.props.name}</h1>;
+          return <div><h1>Hello {this.props.name}</h1> <p>I am {this.props.age}</p></div>		      
         }
       });
 
       React.render(
-        <HelloMessage name="John" />,
+        <HelloMessage name="John" age='21' />,
         document.getElementById('example')
       );
     </script>

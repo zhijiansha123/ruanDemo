@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>明路星消息详情——react</title>
+<script src="build/react.js"></script>
+<script src="build/JSXTransformer.js"></script>
+<style>
+html, body, div, p, a, img, span {
+	margin: 0 auto;
+	padding: 0;
+}
+body {
+	background: #ebebeb;
+	font-family: "微软雅黑";
+	font-size: 100%;
+	line-height: 1.8em;
+	color: #353535;
+	max-width: 640px;
+}
+.margin_bottom_10 {
+	margin-bottom: 10px;
+}
+.head {
+	background: #ff3c4e;
+	color: #fff;
+	padding: 20px;
+	font-size: 150%;
+	text-align: center;
+}
+.content {
+	background: #fff;
+	padding: 15px;
+	border-bottom: solid 1px #dadada;
+	border-top: solid 1px #dadada;
+	overflow: hidden;
+}
+.gray {
+	color: #a3a3a3;
+}
+.diver {
+	line-height: 1px;
+	border-bottom: solid 1px #dadada;
+	margin-top: 10px;
+}
+.div_50 {
+	width: 50%;
+	height: auto;
+	overflow: hidden;
+	float: left;
+	text-align: center;
+}
+.img_100 img {
+	width: 100%;
+	max-width: 100%;
+}
+.margin_left_5 {
+	margin-left: 5%;
+}
+.margin_right_5 {
+	margin-right: 5%;
+}
+.div_20 {
+	width: 20%;
+	height: auto;
+	overflow: hidden;
+	float: left;
+	text-align: left;
+}
+.step {
+	color: #868686;
+}
+.left {
+	float: left;
+}
+.right {
+	float: right;
+}
+.refuse {
+	background: #dadada;
+	padding: 5px 0;
+}
+.agree {
+	background: #ff3c4e;
+	padding: 5px 0;
+	color: #fff;
+}
+.min_height {
+	min-height: 300px;
+}
+</style>
+</head>
+
+<body>
+<script type="text/jsx">
+var info=['消息详情'],
+    infoMes=[{'name':'张有福','time':'2010年06月20日',con:'我的出差报销我的出差报销我的出差报销我的出差报销我的出差报销'}],
+    imgSrc=['images/2_03.png'],
+	caozuo=[{'time':'2015.6.13',con:'第一次提交失败，未及时提交发票'},{'time':'2015.6.13',con:'第二次提交失败，未及时提交发票'},{'time':'2015.6.13',con:'第一次提交失败，未及时提交发票'},{'time':'2015.6.13',con:'第二次提交失败，未及时提交发票'},{'time':'2015.6.13',con:'第一次提交失败，未及时提交发票'},{'time':'2015.6.13',con:'第二次提交失败，未及时提交发票'},{'time':'2015.6.13',con:'第一次提交失败，未及时提交发票'},{'time':'2015.6.13',con:'第二次提交失败，未及时提交发票'}];
+
+React.render(
+      <body>
+	
+	  <div className="head margin_bottom_10">
+		<span className="left"><a href="javascript:history.back()"><img src='images/arrow.png'/></a></span>
+		{
+			  info.map(function (info) {
+				return <span>页面是, {info}!</span>
+			  })
+			}
+	  </div>
+	
+	  <div className="content margin_bottom_10">
+        <p>标题</p>
+		{  
+			infoMes.map(function(message){
+				return(
+		          <small className="gray">  <span>{message.name}</span>  
+					<span>{message.time}</span>
+				  </small>
+				)
+			    }
+			)
+		},
+      { 
+	    infoMes.map(function(message){return(
+		   <p>{message.con}</p>
+		)})
+	  }
+		<div className="diver margin_bottom_10"></div>
+		<div className="div_50  agree">同意</div>
+		<div className="div_50  refuse">不同意</div>
+      </div>
+	  
+	  <div className="content margin_bottom_10">
+		  <p className="img_100"><img src={imgSrc}/> 
+		  </p>
+	  </div>
+       
+	   <div className="content margin_bottom_10 min_height">
+     <p>操作历史</p>
+	{
+			caozuo.map(function(mlx){
+			return (
+			<p>
+			<small className="gray"><span className="right">{mlx.time}</span>
+		     {mlx.con}
+			</small>
+			</p>)
+	}
+)
+}
+</div>
+
+	  </body>,
+		document.body
+)
+</script>
+</body>
+</html>

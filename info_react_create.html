@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>明路星消息详情——React.createClass</title>
+<script src="build/react.js"></script>
+<script src="build/JSXTransformer.js"></script>
+<style>
+html, body, div, p, a, img, span {
+	margin: 0 auto;
+	padding: 0;
+}
+body {
+	background: #ebebeb;
+	font-family: "微软雅黑";
+	font-size: 100%;
+	line-height: 1.8em;
+	color: #353535;
+	max-width: 640px;
+}
+.margin_bottom_10 {
+	margin-bottom: 10px;
+}
+.margin_right_5{ margin-right:5px;}
+.head {
+	background: #ff3c4e;
+	color: #fff;
+	padding: 20px;
+	font-size: 150%;
+	text-align: center;
+}
+.content {
+	background: #fff;
+	padding: 15px;
+	border-bottom: solid 1px #dadada;
+	border-top: solid 1px #dadada;
+	overflow: hidden;
+}
+.gray {
+	color: #a3a3a3;
+}
+.diver {
+	line-height: 1px;
+	border-bottom: solid 1px #dadada;
+	margin-top: 10px;
+}
+.div_50 {
+	width: 50%;
+	height: auto;
+	overflow: hidden;
+	float: left;
+	text-align: center;
+}
+.img_100 img {
+	width: 100%;
+	max-width: 100%;
+}
+.margin_left_5 {
+	margin-left: 5%;
+}
+.margin_right_5 {
+	margin-right: 5%;
+}
+.div_20 {
+	width: 20%;
+	height: auto;
+	overflow: hidden;
+	float: left;
+	text-align: left;
+}
+.step {
+	color: #868686;
+}
+.left {
+	float: left;
+}
+.right {
+	float: right;
+}
+.refuse {
+	background: #dadada;
+	padding: 5px 0;
+}
+.agree {
+	background: #ff3c4e;
+	padding: 5px 0;
+	color: #fff;
+}
+.min_height {
+	min-height: 300px;
+}
+</style>
+</head>
+
+<body>
+<script type="text/jsx">
+var info=['消息详情'],
+    infoMes=[{'name':'张有福','time':'2010年06月20日',con:'我的出差报销我的出差报销我的出差报销我的出差报销我的出差报销'}],
+    imgDefault=['images/default.png']
+	imgSrc=['images/2_03.png'],
+	caozuo=[{'time':'2015.6.13',con:'第一次提交失败，未及时提交发票'},{'time':'2015.6.13',con:'第二次提交失败，未及时提交发票'},{'time':'2015.6.13',con:'第一次提交失败，未及时提交发票'},{'time':'2015.6.13',con:'第二次提交失败，未及时提交发票'},{'time':'2015.6.13',con:'第一次提交失败，未及时提交发票'},{'time':'2015.6.13',con:'第二次提交失败，未及时提交发票'},{'time':'2015.6.13',con:'第一次提交失败，未及时提交发票'},{'time':'2015.6.13',con:'第二次提交失败，未及时提交发票'}];
+ //top
+ var MessageTop=React.createClass({
+     render: function(){
+	  return <div className="head margin_bottom_10">
+		<span className="left"><a href="javascript:history.back()"><img src='images/arrow.png'/></a></span>
+		<span>页面是, {info}!</span>
+	  </div>	
+	}	 
+ }),
+ //标题 姓名 时间 简介 同意不同意
+  MessageTitle=React.createClass({
+      render: function(){
+		return <div className="content margin_bottom_10"><p>标题</p> 
+		<small className="gray"><span className="margin_right_5">{infoMes.map(function(info){return info.name})}</span> 
+		<span>{infoMes.map(function(info){return info.time})}</span>
+		</small>
+		<p>{infoMes.map(function(info){return info.con})}</p>
+		 <div className="diver margin_bottom_10"></div>
+         <div className="div_50  agree">同意</div>
+         <div className="div_50  refuse">不同意</div>
+		</div>
+	  }	 
+  }),
+  //图片
+  MessagePic=React.createClass({
+	  getInitialState: function() {
+		return <img src={imgDefault} />
+	  },
+	   render: function(){
+		 return <div className="content margin_bottom_10"><p className="img_100"><img src={imgSrc} />
+		 </p>   
+		 </div>  
+	   }  
+  }),
+  //操作历史的 list的模块
+  MessageList=React.createClass({
+	render: function(){
+	 return <div className="content margin_bottom_10"><p>操作历史</p>
+	 {
+		caozuo.map(function(list){
+		  return <p>
+			<small className="gray"><span className="right">{list.time}</span>
+		     {list.con}
+			</small>
+			</p>
+	    }) 
+	  }
+	 </div>
+	}  
+  }),
+  //计数器 数字一直在+1
+ Timer = React.createClass({
+	  getInitialState: function() {
+		return {secondsElapsed: 0};
+	  },
+	  tick: function() {
+		this.setState({secondsElapsed: this.state.secondsElapsed + 1});
+	  },
+	  componentDidMount: function() {
+		this.interval = setInterval(this.tick, 1000);
+	  },
+	  componentWillUnmount: function() {
+		clearInterval(this.interval);
+	  },
+	  render: function() {
+		return (
+		  <div className="content margin_bottom_10">Seconds Elapsed: {this.state.secondsElapsed}</div>
+		);
+	  }
+}),
+//点击显示 隐藏 toggle
+ LikeButton = React.createClass({
+  getInitialState: function() {
+    return {liked: false};
+  },
+  handleClick: function(event) {
+    this.setState({liked: !this.state.liked});
+  },
+  render: function() {
+    var text = this.state.liked ? 'like' : 'haven\'t liked';
+    return (
+     <div className="content margin_bottom_10"> <p>
+        You {text} this. <button onClick={this.handleClick} style={{color:'#990000',height:50}}>Click to toggle.</button>
+      </p>
+	  </div>
+    );
+  }
+});
+ 
+ React.render(
+  <body>
+  <MessageTop  />
+  <MessageTitle />
+  <MessagePic />
+  <MessageList />
+  <Timer />
+  <LikeButton />
+  </body>
+  , document.body);
+</script>
+<script>
+function LSval(key,val){
+        if (arguments.length == 1){
+            return localStorage.getItem(key) 
+        }else{
+            localStorage.setItem(key,val) 
+        }     
+    }
+	LSval(2,8)
+</script>
+</body>
+</html>

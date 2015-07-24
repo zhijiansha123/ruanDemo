@@ -1,5 +1,10 @@
 <!DOCTYPE html>
 <html>
+ <meta charset="utf-8">
+ <title>DEMO3</title>
+ <style>
+ .add{ color:#990000;}
+ </style>
   <head>
     <script src="../build/react.js"></script>
     <script src="../build/JSXTransformer.js"></script>
@@ -8,12 +13,18 @@
     <div id="example"></div>
     <script type="text/jsx">
       var arr = [
-        <h1>Hello world!</h1>,
+        <h1>Hello world!<span className='add'>6.29</span></h1>,
         <h2>React is awesome</h2>,
+		<h1>React is 前端 技术</h1>
       ];
+	  var owner=[
+	   <p>我是凑数的，我是凑数的</p>,
+	   <p>我是凑数的，我是凑数的</p>,
+	   <p>我是凑数的，我是凑数的</p>
+	  ];
       React.render(
-        <div>{arr}</div>,
-        document.getElementById('example')
+        <div>{arr}<div className="add">{owner}</div></div>,
+		document.getElementById('example')
       );
     </script>
   </body>

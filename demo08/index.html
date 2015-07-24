@@ -1,5 +1,7 @@
 <!DOCTYPE html>
 <html>
+ <meta charset="utf-8">
+<title>DEMO8 表单 P的内容是实时用户输入的内容</title>
   <head>
     <script src="../build/react.js"></script>
     <script src="../build/JSXTransformer.js"></script>
@@ -18,7 +20,8 @@
           return (
             <div>
               <input type="text" value={value} onChange={this.handleChange} />
-              <p>{value}</p>
+              <p>您输入的的内容为：{value}</p>
+			  <button>确定</button>
             </div>
           );
         }

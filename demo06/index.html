@@ -1,5 +1,7 @@
 <!DOCTYPE html>
 <html>
+ <meta charset="utf-8">
+ <title>DEMO6 React.findDOMNode获取真实DOM节点</title>
   <head>
     <script src="../build/react.js"></script>
     <script src="../build/JSXTransformer.js"></script>
@@ -9,14 +11,31 @@
     <script type="text/jsx">
 var MyComponent = React.createClass({
   handleClick: function() {
-    React.findDOMNode(this.refs.myTextInput).focus();
+   React.findDOMNode(this.refs.myTextInput).focus();
+   console.log(this)
+  },
+  oClick:function(){
+	//alert(1)  
+	//alert(React.findDOMNode(this.props.value));//null
+	alert(this.props.value);//undefined
+	alert(event.target.value);//a
+  },
+  hBtn:function(){
+	console.log(event.target.id);
+	window.open('a.html','_self');
+	  
   },
   render: function() {
     return (
       <div>
+	  <div>
         <input type="text" ref="myTextInput" />
         <input type="button" value="Focus the text input" onClick={this.handleClick} />
       </div>
+	  <h1 ref="test" value="test02">React.findDOMNode()获取真实DOM节点</h1>
+	  <button onClick={this.oClick} id="content"  value="a">我是测试用的……</button>
+	  <h1 onClick={this.hBtn} id='btn'>点击我有惊喜</h1>
+	  </div>
     );
   }
 });
